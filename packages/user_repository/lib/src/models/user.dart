@@ -35,8 +35,9 @@ class MyUser {
       hasActiveCard: entuty.hasActiveCard,
     );
   }
+
   @override
   String toString() {
-    return 'MyUser $userId,$email,$name,$hasActiveCard':
+    return 'MyUser $userId,$email,$name,$hasActiveCard';
   }
 }
