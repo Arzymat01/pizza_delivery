@@ -20,10 +20,10 @@ class MyUserEntity {
 
   static MyUserEntity fromDocument(Map<String, dynamic> doc) {
     return MyUserEntity(
-      userId: userId,
-      email: email,
-      name: name,
-      hasActiveCard: hasActiveCard,
+      userId: doc['userId'],
+      email: doc['mail'],
+      name: doc['name'],
+      hasActiveCard: doc[' hasActiveCard'],
     );
   }
 }
