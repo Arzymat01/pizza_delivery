@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
@@ -24,8 +26,12 @@ class FirebaseUserRepo implements UserRepository {
 
   @override
   Future<void> signIn(String email, String password) {
-    // TODO: implement signIn
-    throw UnimplementedError();
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
   }
 
   @override
