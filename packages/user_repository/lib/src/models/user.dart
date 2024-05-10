@@ -1,45 +1,44 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../entities/entities.dart';
-
-export 'user.dart';
 
 class MyUser {
   String userId;
   String email;
   String name;
-  bool hasActiveCard;
+  bool hasActiveCart;
+
   MyUser({
     required this.userId,
     required this.email,
     required this.name,
-    required this.hasActiveCard,
+    required this.hasActiveCart,
   });
+
   static final empty = MyUser(
     userId: '',
     email: '',
     name: '',
-    hasActiveCard: false,
+    hasActiveCart: false,
   );
+
   MyUserEntity toEntity() {
     return MyUserEntity(
       userId: userId,
       email: email,
       name: name,
-      hasActiveCard: hasActiveCard,
+      hasActiveCart: hasActiveCart,
     );
   }
 
-  static MyUser fromEntity(MyUserEntity entuty) {
+  static MyUser fromEntity(MyUserEntity entity) {
     return MyUser(
-      userId: entuty.userId,
-      email: entuty.email,
-      name: entuty.name,
-      hasActiveCard: entuty.hasActiveCard,
-    );
+        userId: entity.userId,
+        email: entity.email,
+        name: entity.name,
+        hasActiveCart: entity.hasActiveCart);
   }
 
   @override
   String toString() {
-    return 'MyUser $userId,$email,$name,$hasActiveCard';
+    return 'MyUser: $userId, $email, $name, $hasActiveCart';
   }
 }
