@@ -51,14 +51,19 @@ class FirebaseUserRepo implements UserRepository {
   }
 
   @override
-  Future<void> logOut() {
-    // TODO: implement logOut
-    throw UnimplementedError();
+  Future<void> logOut() async {
+    await _firebaseAuth.signOut();
   }
 
   @override
-  Future<void> setUserData(MyUser user) {
-    // TODO: implement setUserData
-    throw UnimplementedError();
+  Future<void> setUserData(MyUser myUser) async {
+    try {
+      await usersCollection
+          .doc(myUser.userId)
+          .set(myUser.toEntity().toDocument());
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
   }
 }
