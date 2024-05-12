@@ -8,8 +8,6 @@ sealed class AuthenticationBlocEvent extends Equatable {
 }
 
 class AuthenticationUserChanged extends AuthenticationBlocEvent {
-  final MyUser user;
+  final MyUser? user;
   const AuthenticationUserChanged(this.user);
-  @override
-  List<Object> get props => [user];
 }
