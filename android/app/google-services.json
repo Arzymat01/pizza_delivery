@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1061103661614",
+    "project_id": "pizaa-delivery-15e5d",
+    "storage_bucket": "pizaa-delivery-15e5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061103661614:android:bb04eb6518328dfebce5bf",
+        "android_client_info": {
+          "package_name": "com.exapay.pizzaApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4uQfpAiQebgK-r1UDb8fesGREcCumfaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
