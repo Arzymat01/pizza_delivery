@@ -9,8 +9,8 @@ sealed class SignInState extends Equatable {
 
 final class SignInInitial extends SignInState {}
 
-final class SignInfailure extends SignInState {}
+final class SignInFailure extends SignInState {}
 
-final class SignInLoadong extends SignInState {}
+final class SignInSuccess extends SignInState {}
 
-final class SignInSucces extends SignInState {}
+final class SignInProcess extends SignInState {}
