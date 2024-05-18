@@ -14,10 +14,11 @@ class MyAppView extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.light(
-              background: Colors.grey.shade100,
-              onBackground: Colors.black,
-              primary: Colors.blue,
-              onPrimary: Colors.white)),
+        background: Colors.grey.shade200,
+        onBackground: Colors.black,
+        primary: Colors.blue,
+        onPrimary: Colors.white,
+      )),
       home: BlocBuilder<AuthenticationBlocBloc, AuthenticationState>(
         builder: ((context, state) {
           if (state.status == AuthenticationStatus.authenticated) {
