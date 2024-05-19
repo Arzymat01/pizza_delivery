@@ -52,124 +52,125 @@ class HomeSreen extends StatelessWidget {
           ),
           itemCount: 8,
           itemBuilder: (context, int i) {
-            return Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade400,
-                    blurRadius: 5,
-                    offset: const Offset(3, 5),
-                  )
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset('assets/1.png'),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
+            return Material(
+              elevation: 3,
+              color: Colors.white,
+              child: InkWell(
+                onTap: () {},
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset('assets/1.png'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Text(
-                              'Не вегетарианец',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 6,
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              child: Text(
+                                'Не вегетарианец',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 6,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 10),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 6,
-                              vertical: 4,
+                          const SizedBox(width: 10),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.green.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Text(
-                              '🌶️Баланс    ',
-                              style: TextStyle(
-                                color: Colors.green,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 7,
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 4,
+                              ),
+                              child: Text(
+                                '🌶️Баланс    ',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 7,
+                                ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Text(
-                      'Cырное Марвел',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                          )
+                        ],
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Text(
-                      'Создание радости: ваша пицца — лучшее блюдо!',
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w300,
+                    const SizedBox(height: 8),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        'Cырное Марвел',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          '450 сом',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text(
+                        'Создание радости: ваша пицца — лучшее блюдо!',
+                        style: TextStyle(
+                          color: Colors.grey.shade500,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w300,
                         ),
-                        SizedBox(width: 5),
-                        Text(
-                          '600 сом',
-                          style: TextStyle(
-                              color: Colors.grey.shade500,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            CupertinoIcons.add_circled_solid,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                '450 сом',
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                '600 сом',
+                                style: TextStyle(
+                                    color: Colors.grey.shade500,
+                                    fontSize: 12,
+                                    decoration: TextDecoration.lineThrough,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                            ],
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              CupertinoIcons.add_circled_solid,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },
