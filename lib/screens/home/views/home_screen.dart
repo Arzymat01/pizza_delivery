@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizza_app/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:pizza_app/screens/home/views/detetails_screen.dart';
 
 class HomeSreen extends StatelessWidget {
   const HomeSreen({Key? key}) : super(key: key);
@@ -54,9 +55,20 @@ class HomeSreen extends StatelessWidget {
           itemBuilder: (context, int i) {
             return Material(
               elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
               color: Colors.white,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) =>
+                          const DetetailsScreen(),
+                    ),
+                  );
+                },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
