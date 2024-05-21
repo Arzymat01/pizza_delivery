@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pizza_app/components/macro.dart';
 
 class DetetailsScreen extends StatelessWidget {
   const DetetailsScreen({Key? key}) : super(key: key);
@@ -93,27 +94,30 @@ class DetetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
+                    const SizedBox(height: 12),
+                    const Row(
                       children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: const [
-                                BoxShadow(
-                                  offset: Offset(2, 2),
-                                  blurRadius: 5,
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              children: [],
-                            ),
-                          ),
-                        )
+                        MyMacroWidjet(
+                          title: 'Калорий',
+                          value: 365,
+                        ),
+                        SizedBox(width: 10),
+                        MyMacroWidjet(
+                          title: 'Белок',
+                          value: 36,
+                        ),
+                        SizedBox(width: 10),
+                        MyMacroWidjet(
+                          title: 'Жир',
+                          value: 21,
+                        ),
+                        SizedBox(width: 10),
+                        MyMacroWidjet(
+                          title: 'Yглеводы',
+                          value: 38,
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
