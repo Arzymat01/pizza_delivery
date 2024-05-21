@@ -46,13 +46,13 @@ class DetetailsScreen extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 2,
                           child: Text(
                             'Truffle Temtation Extravagazna',
@@ -65,16 +65,53 @@ class DetetailsScreen extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              '450 сом',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            alignment: Alignment.centerRight,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '450 сом',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
+                                ),
+                                const Text(
+                                  '600 сом',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey,
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: const [
+                                BoxShadow(
+                                  offset: Offset(2, 2),
+                                  blurRadius: 5,
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [],
+                            ),
+                          ),
+                        )
                       ],
                     )
                   ],
