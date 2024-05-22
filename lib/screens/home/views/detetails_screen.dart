@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pizza_app/components/macro.dart';
 
 class DetetailsScreen extends StatelessWidget {
@@ -100,23 +101,51 @@ class DetetailsScreen extends StatelessWidget {
                         MyMacroWidjet(
                           title: 'Калорий',
                           value: 365,
+                          icon: FontAwesomeIcons.fire,
                         ),
                         SizedBox(width: 10),
                         MyMacroWidjet(
                           title: 'Белок',
                           value: 36,
+                          icon: FontAwesomeIcons.dumbbell,
                         ),
                         SizedBox(width: 10),
                         MyMacroWidjet(
                           title: 'Жир',
                           value: 21,
+                          icon: FontAwesomeIcons.oilWell,
                         ),
                         SizedBox(width: 10),
                         MyMacroWidjet(
                           title: 'Yглеводы',
                           value: 38,
+                          icon: FontAwesomeIcons.breadSlice,
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 40),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 50,
+                      child: TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          elevation: 3.0,
+                          backgroundColor: Colors.black,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: const Text(
+                          'Купить сейчас',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
