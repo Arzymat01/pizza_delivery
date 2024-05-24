@@ -1,23 +1,57 @@
-// class Pizza {
-//   String pizzaId;
-//   String picture;
-//   bool isVeg;
-//   int spicy;
-//   String name;
-//   String decription;
-//   double price;
-//   double discount;
-//   List<Macros> macros;
+import 'package:pizza_repository/src/entities/pizza_enties.dart';
+import 'package:pizza_repository/src/models/macros.dart';
 
-//   Pizza(
-//     this.pizzaId,
-//     this.picture,
-//     this.isVeg,
-//     this.spicy,
-//     this.name,
-//     this.decription,
-//     this.price,
-//     this.macros,
-//     this.discount,
-//   );
-// }
+import '../entities/entities.dart';
+import 'models.dart';
+
+class Pizza {
+  String pizzaId;
+  String picture;
+  bool isVeg;
+  int spicy;
+  String name;
+  String description;
+  int price;
+  int discount;
+  Macros macros;
+
+  Pizza({
+    required this.pizzaId,
+    required this.picture,
+    required this.isVeg,
+    required this.spicy,
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.discount,
+    required this.macros,
+  });
+
+  PizzaEntity toEntity() {
+    return PizzaEntity(
+      pizzaId: pizzaId,
+      picture: picture,
+      isVeg: isVeg,
+      spicy: spicy,
+      name: name,
+      description: description,
+      price: price,
+      discount: discount,
+      macros: macros,
+    );
+  }
+
+  static Pizza fromEntity(PizzaEntity entity) {
+    return Pizza(
+      pizzaId: entity.pizzaId,
+      picture: entity.picture,
+      isVeg: entity.isVeg,
+      spicy: entity.spicy,
+      name: entity.name,
+      description: entity.description,
+      price: entity.price,
+      discount: entity.discount,
+      macros: entity.macros,
+    );
+  }
+}
