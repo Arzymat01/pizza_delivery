@@ -1,4 +1,4 @@
-import 'package:pizza_repository/src/entities/macros.dart';
+import 'package:pizza_repository/src/entities/macros_entity.dart';
 import 'package:pizza_repository/src/models/macros.dart';
 
 class PizzaEntity {
@@ -8,8 +8,8 @@ class PizzaEntity {
   int spicy;
   String name;
   String description;
-  int price;
-  int discount;
+  double price;
+  double discount;
   Macros macros;
 
   PizzaEntity({
