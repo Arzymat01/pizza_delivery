@@ -1,4 +1,4 @@
-import 'package:pizza_repository/src/entities/macros_entity.dart';
+import '../entities/macros_entity.dart';
 
 class Macros {
   int calories;
@@ -24,9 +24,10 @@ class Macros {
 
   static Macros fromEntity(MacrosEntity entity) {
     return Macros(
-        calories: entity.calories,
-        proteins: entity.proteins,
-        fat: entity.fat,
-        carbs: entity.carbs);
+      calories: entity.calories,
+      proteins: entity.proteins,
+      fat: entity.fat,
+      carbs: entity.carbs
+    );
   }
 }
