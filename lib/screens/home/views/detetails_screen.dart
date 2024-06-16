@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pizza_app/components/macro.dart';
+import 'package:pizza_repository/pizza_repository.dart';
 
 class DetetailsScreen extends StatelessWidget {
-  const DetetailsScreen({Key? key}) : super(key: key);
+  final Pizza pizza;
+  const DetetailsScreen(this.pizza, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class DetetailsScreen extends StatelessWidget {
                     blurRadius: 5,
                   ),
                 ],
-                image: DecorationImage(image: AssetImage('assets/1.png')),
+                image: DecorationImage(image: NetworkImage(pizza.picture)),
               ),
             ),
             const SizedBox(height: 30),
@@ -54,10 +56,10 @@ class DetetailsScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 2,
                           child: Text(
-                            'Truffle Temtation Extravagazna',
+                            pizza.name,
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -72,7 +74,7 @@ class DetetailsScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  '450 сом',
+                                  '\$${pizza.price - (pizza.price * pizza.discount) / 100}.00 сом',
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -80,8 +82,8 @@ class DetetailsScreen extends StatelessWidget {
                                           .colorScheme
                                           .primary),
                                 ),
-                                const Text(
-                                  '600 сом',
+                                Text(
+                                  '\$${pizza.price}.00',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -96,29 +98,29 @@ class DetetailsScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       children: [
                         MyMacroWidjet(
                           title: 'Калорий',
-                          value: 365,
+                          value: pizza.macros.calories,
                           icon: FontAwesomeIcons.fire,
                         ),
                         SizedBox(width: 10),
                         MyMacroWidjet(
                           title: 'Белок',
-                          value: 36,
+                          value: pizza.macros.proteins,
                           icon: FontAwesomeIcons.dumbbell,
                         ),
                         SizedBox(width: 10),
                         MyMacroWidjet(
                           title: 'Жир',
-                          value: 21,
+                          value: pizza.macros.fat,
                           icon: FontAwesomeIcons.oilWell,
                         ),
                         SizedBox(width: 10),
                         MyMacroWidjet(
                           title: 'Yглеводы',
-                          value: 38,
+                          value: pizza.macros.carbs,
                           icon: FontAwesomeIcons.breadSlice,
                         ),
                       ],

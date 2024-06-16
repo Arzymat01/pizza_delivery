@@ -47,150 +47,173 @@ class HomeSreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: BlocBuilder<GetPizzaBloc, GetPizzaState>(
           builder: (context, state) {
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 9 / 16,
-              ),
-              itemCount: 8,
-              itemBuilder: (context, int i) {
-                return Material(
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  color: Colors.white,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) =>
-                              const DetetailsScreen(),
-                        ),
-                      );
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset('assets/1.png'),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 8,
-                                    vertical: 4,
-                                  ),
-                                  child: Text(
-                                    'Не вегетарианец',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 6,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.green.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 4,
-                                  ),
-                                  child: Text(
-                                    '🌶️Баланс    ',
-                                    style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 7,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Text(
-                            'Cырное Марвел',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Text(
-                            'Создание радости: ваша пицца — лучшее блюдо!',
-                            style: TextStyle(
-                              color: Colors.grey.shade500,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '450 сом',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    '600 сом',
-                                    style: TextStyle(
-                                        color: Colors.grey.shade500,
-                                        fontSize: 12,
-                                        decoration: TextDecoration.lineThrough,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                ],
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  CupertinoIcons.add_circled_solid,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+            if (state is GetPizzaSuccees) {
+              return GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 9 / 16,
+                ),
+                itemCount: state.pizzas.length,
+                itemBuilder: (context, int i) {
+                  return Material(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                  ),
-                );
-              },
-            );
+                    color: Colors.white,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                DetetailsScreen(state.pizzas[i]),
+                          ),
+                        );
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(state.pizzas[i].picture),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: state.pizzas[i].isVeg
+                                        ? Colors.green
+                                        : Colors.red,
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8,
+                                      vertical: 4,
+                                    ),
+                                    child: Text(
+                                      state.pizzas[i].isVeg
+                                          ? 'вегетарианец'
+                                          : 'Не вегетарианец',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 6,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.green.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 6,
+                                      vertical: 4,
+                                    ),
+                                    child: Text(
+                                      state.pizzas[i].spicy == 1
+                                          ? '🌶️Мягкий'
+                                          : state.pizzas[i].spicy == 2
+                                              ? '🌶️ Balance'
+                                              : '🌶️острый',
+                                      style: TextStyle(
+                                        color: state.pizzas[i].spicy == 1
+                                            ? Colors.green
+                                            : state.pizzas[i].spicy == 2
+                                                ? Colors.orange
+                                                : Colors.redAccent,
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 7,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Text(
+                              state.pizzas[i].name,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Text(
+                              state.pizzas[i].description,
+                              style: TextStyle(
+                                color: Colors.grey.shade500,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '\$${state.pizzas[i].price}.00 сом',
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text(
+                                      '\$${state.pizzas[i].price - (state.pizzas[i].price * state.pizzas[i].discount) / 100}.00 сом',
+                                      style: TextStyle(
+                                          color: Colors.grey.shade500,
+                                          fontSize: 12,
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ],
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    CupertinoIcons.add_circled_solid,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            } else if (state is GetPizzaLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return Center(
+                child: Text('ошибка повторите попытку позже'),
+              );
+            }
           },
         ),
       ),
